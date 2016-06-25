@@ -1,3 +1,4 @@
 facebook-sdk
 soundcloud
 six
+pyramid==1.7

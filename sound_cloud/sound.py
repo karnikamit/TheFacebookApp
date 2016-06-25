@@ -38,5 +38,5 @@ Souond Cloud Resource obj attrs!
 if __name__ == '__main__':
     tracks = get_tracks(sound_cloud_creds['client_id'])
     for track in tracks:
-        print track.uri
+        print track.stream_url
         exit(0)
