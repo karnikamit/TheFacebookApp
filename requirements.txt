@@ -1,2 +1,3 @@
 facebook-sdk
-simpleconfigparser
+soundcloud
+six

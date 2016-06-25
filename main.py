@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 __author__ = 'karnikamit'
 import facebook
-from config import PAGE_ID, ACCESS_TOKEN    # keep all your tokens, IDs in config.py
+from config import facebook_creds    # keep all your tokens, IDs in config.py
 
 
 def main(msg_to_post):
-    cfg = {"page_id": '%d' % PAGE_ID, "access_token": ACCESS_TOKEN}
+    cfg = {"page_id": facebook_creds['PAGE_ID'], "access_token": facebook_creds['ACCESS_TOKEN']}
     # api = get_api(cfg)
     api = facebook.GraphAPI(cfg['access_token'])
     api.put_wall_post(msg_to_post)
