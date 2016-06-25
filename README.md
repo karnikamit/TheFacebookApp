@@ -1,2 +1,5 @@
-# TheFacebookApp
-Python script will post to Facebook page's wall
+# TheFacebookApp (Weekend project)
+
+* facebook-sdk for python
+* pyramid web framework for wsgi application
+* soundcloud-sdk for python
