@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 __author__ = 'karnikamit'
-import logging
 import facebook
-from wsgiref.simple_server import make_server
-from fb import post
+from pyramid.config import Configurator
 
 
-
+def make_app(package):
+    config = Configurator()
+    config.add_route('myview', '/')
+    config.add_route('fb_post', '/facebook/post')
+    config.scan(package=package)
+    return config.make_wsgi_app()
 
 
 def get_api(cfg):

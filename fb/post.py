@@ -5,14 +5,17 @@ from pyramid.config import Configurator
 import facebook
 from config import facebook_creds    # keep all your tokens, IDs in config.py
 from pyramid.view import view_config
-from pyramid.response import Response
-from pyramid_app.run import start_server
+from pyramid.response import FileResponse
 import urllib
+import os
+_here = os.path.dirname(__file__)
+_templates = r'%s\templates' % _here        # windows path
 
 
-@view_config(route_name='test')
+@view_config(route_name='myview')
 def my_view(request):
-    return Response('SUCCESS!')
+    response = FileResponse(_templates+r'\index.html')
+    return response
 
 
 @view_config(route_name='fb_post', request_method='POST', renderer='json')
@@ -59,4 +62,4 @@ if __name__ == '__main__':
     config.add_route('fb_post', '/facebook/post')
     config.scan()
     app = config.make_wsgi_app()
-    print start_server(app)
+
