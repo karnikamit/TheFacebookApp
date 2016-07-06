@@ -6,8 +6,10 @@ from pyramid.config import Configurator
 
 def make_app(package):
     config = Configurator()
+    # TODO find a way to add routes dynamically!
     config.add_route('myview', '/')
     config.add_route('fb_post', '/facebook/post')
+    config.add_route('get_tracks', '/tracks')
     config.scan(package=package)
     return config.make_wsgi_app()
 

@@ -5,13 +5,15 @@ import soundcloud
 import logging
 
 
-def get_client(client_id):
+def get_client(client_id=None):
     """
 
     :param client_id:
     :return: client objct
     """
     try:
+        if not client_id:
+            client_id = sound_cloud_creds['client_id']
         client = soundcloud.Client(client_id=client_id)
     except Exception, e:
         logging.info('Exception while geetting soundCloud client: %s' % e)
@@ -19,10 +21,11 @@ def get_client(client_id):
         return client
 
 
-def get_tracks(client_id):
+def get_tracks(client_id=None):
     client = get_client(client_id)
-    return client.get('/tracks', limit=10)
-
+    tracks = client.get('/tracks', limit=10)
+    track_details = {track.title: track.stream_url for track in tracks}
+    return track_details
 
 '''
 Souond Cloud Resource obj attrs!
@@ -36,7 +39,4 @@ Souond Cloud Resource obj attrs!
 
 '''
 if __name__ == '__main__':
-    tracks = get_tracks(sound_cloud_creds['client_id'])
-    for track in tracks:
-        print track.stream_url
-        exit(0)
+    print get_tracks(sound_cloud_creds['client_id'])

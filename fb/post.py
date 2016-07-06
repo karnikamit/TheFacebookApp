@@ -4,10 +4,12 @@ import logging
 from pyramid.config import Configurator
 import facebook
 from config import facebook_creds    # keep all your tokens, IDs in config.py
+from sound_cloud.sound import get_tracks
 from pyramid.view import view_config
 from pyramid.response import FileResponse
 import urllib
 import os
+import json
 _here = os.path.dirname(__file__)
 _templates = r'%s\templates' % _here        # windows path
 
@@ -29,6 +31,12 @@ def post_to_wall(request, access_token=facebook_creds['ACCESS_TOKEN'], attachmen
         logging.error('Exception while posting: %s' %e)
     else:
         return posting
+
+
+@view_config(route_name='get_tracks', request_method='GET', renderer='json')
+def tracks():
+    tracks = get_tracks()
+    return json.dumps(tracks)
 
 
 def make_pyramid_app(route_details={}):

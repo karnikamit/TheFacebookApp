@@ -2,7 +2,7 @@
 __author__ = 'karnikamit'
 import logging
 from wsgiref.simple_server import make_server
-from main import make_app
+from application import make_app
 from fb import post
 
 
