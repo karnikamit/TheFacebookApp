@@ -10,6 +10,7 @@ def make_app(package):
     config.add_route('myview', '/')
     config.add_route('fb_post', '/facebook/post')
     config.add_route('get_tracks', '/tracks')
+    config.add_route('play_tic_tac_toe', '/tictac')
     config.scan(package=package)
     return config.make_wsgi_app()
 

@@ -4,12 +4,13 @@ import logging
 from pyramid.config import Configurator
 import facebook
 from config import facebook_creds    # keep all your tokens, IDs in config.py
+# from tic_tac_toe import TicTacToe
 from sound_cloud.sound import get_tracks
 from pyramid.view import view_config
 from pyramid.response import FileResponse
 import urllib
 import os
-import json
+# import json
 _here = os.path.dirname(__file__)
 _templates = r'%s\templates' % _here        # windows path
 
@@ -36,7 +37,13 @@ def post_to_wall(request, access_token=facebook_creds['ACCESS_TOKEN'], attachmen
 @view_config(route_name='get_tracks', request_method='GET', renderer='json')
 def tracks():
     tracks = get_tracks()
-    return json.dumps(tracks)
+    return tracks
+
+
+@view_config(route_name='play_tic_tac_toe', request_method='GET', renderer='json')
+def play_tic(request):
+    response = FileResponse(_templates + r'\tictac.html')
+    return response
 
 
 def make_pyramid_app(route_details={}):

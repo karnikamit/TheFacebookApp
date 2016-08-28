@@ -6,7 +6,6 @@
 </head>
 <link rel='shortcut icon' type='image/jpg' href=r'\favicon.ico' />
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -30,16 +29,23 @@
   data-width="450"
   data-show-faces="true">
 </div>
-Type a Msg to post it on FaceBook!
+<p>Type a Msg to post it on Facebook</p>
+
+
 <form action="http://127.0.0.1:9000/facebook/post" method="post">
   Status: <input type="text" name="status"><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="POST">
 </form>
-<button onclick="http://127.0.0.1:9000/tracks"> GET TRACKS </button>
+<script ng-app="myApp"></script>
+<div app="myApp">
+    {{me}}
+</div>
+
+<!--<button onclick="http://127.0.0.1:9000/tracks"> GET TRACKS </button>-->
+<!--<button type="button" onclick="http://127.0.0.1:9000/tictac"> PLAY TIC TAC TOE </button>-->
 
 <!--<audio controls>-->
   <!--<source src="horse.mp3" type="audio/mpeg">-->
 <!--Your browser does not support the audio element.-->
 <!--</audio>-->
-</body>
 </html>
