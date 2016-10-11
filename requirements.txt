@@ -2,3 +2,4 @@ facebook-sdk
 soundcloud
 six
 pyramid==1.7
+Flask==0.11.1
