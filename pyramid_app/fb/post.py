@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 __author__ = 'karnikamit'
 import logging
-from pyramid.config import Configurator
-import facebook
-from config import facebook_creds    # keep all your tokens, IDs in config.py
-# from tic_tac_toe import TicTacToe
-from sound_cloud.sound import get_tracks
-from pyramid.view import view_config
-from pyramid.response import FileResponse
-import urllib
 import os
+import urllib
+
+import facebook
+from pyramid.config import Configurator
+from pyramid.response import FileResponse
+from pyramid.view import view_config
+from pyramid_app.config import facebook_creds    # keep all your tokens, IDs in config.py
+from pyramid_app.sound_cloud.sound import get_tracks
+
 # import json
 _here = os.path.dirname(__file__)
 _templates = r'%s\templates' % _here        # windows path

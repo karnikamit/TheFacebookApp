@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 __author__ = 'karnikamit'
-from config import sound_cloud_creds
-import soundcloud
 import logging
+import soundcloud
+from pyramid_app.config import sound_cloud_creds
+
+logger = logging.getLogger(__name__)
 
 
 def get_client(client_id=None):
@@ -16,7 +18,7 @@ def get_client(client_id=None):
             client_id = sound_cloud_creds['client_id']
         client = soundcloud.Client(client_id=client_id)
     except Exception, e:
-        logging.info('Exception while geetting soundCloud client: %s' % e)
+        logger.error('Exception while geetting soundCloud client: %s' % e)
     else:
         return client
 
