@@ -2,8 +2,7 @@
 __author__ = 'karnikamit'
 from routes.baseroutes import app
 from flask_app import HOST, PORT
-import logging
-logger = logging.getLogger(__name__)
+
 
 try:
     app.run(HOST, PORT)
