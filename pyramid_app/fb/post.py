@@ -14,6 +14,7 @@ from pyramid_app.sound_cloud.sound import get_tracks
 # import json
 _here = os.path.dirname(__file__)
 _templates = r'%s\templates' % _here        # windows path
+logger = logging.getLogger(__name__)
 
 
 @view_config(route_name='myview')
