@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'karnikamit'
 # from flask_app.app import make_flask_app
-from flask import request, jsonify, render_template, url_for
+from flask import request, jsonify, render_template, url_for, current_app
 import os
 from flask import Flask
 import logging
@@ -11,13 +11,14 @@ logger.setLevel(logging.INFO)
 _here = os.path.dirname(__file__)
 _templates = r'%s\templates' % _here        # windows path
 _static_folder = r'%s\templates\static'
-app = Flask(__name__, static_folder=_templates, static_url_path='/templates')
-# static_url_path=_templates,
+app = Flask(__name__)
+# , static_folder=_templates, static_url_path='/templates'
+
 
 @app.route('/t1')
 def get_angular():
     logger.info(_templates)
-    return render_template('t1.html')
+    return current_app.send_static_file('t1.html')
 
 
 @app.route('/index')
