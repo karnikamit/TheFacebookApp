@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 __author__ = 'karnikamit'
 import logging
+
 import soundcloud
-from pyramid_app.config import sound_cloud_creds
+
+from config import sound_cloud_creds
 
 logger = logging.getLogger(__name__)
 

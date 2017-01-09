@@ -1,0 +1,22 @@
+<!doctype html >
+<html ng-app="myApp">
+
+   <head>
+
+   </head>
+    <script src="{{ url_for('static', filename='angular.min.js')}}" type="text/javascirpt"></script>
+   <script src="{{ url_for('static', filename='app.js')}}" type="text/javascirpt"></script>
+   <meta charset="UTF-8">
+   <body>
+    <div ng-controller="myCtrl" >
+         <h2 ng-bind="message"></h2>
+         <br>
+         <button type="button" ng-click="callMe()">Call Me</button>
+        <br>
+        <input type="number" placeholder="number" ng-model="number">
+        {{ number }}
+    </div>
+
+
+   </body>
+</html>

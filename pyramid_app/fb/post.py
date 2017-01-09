@@ -8,7 +8,8 @@ import facebook
 from pyramid.config import Configurator
 from pyramid.response import FileResponse
 from pyramid.view import view_config
-from pyramid_app.config import facebook_creds    # keep all your tokens, IDs in config.py
+
+from config import facebook_creds    # keep all your tokens, IDs in config.py
 from pyramid_app.sound_cloud.sound import get_tracks
 
 # import json

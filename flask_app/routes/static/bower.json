@@ -1,0 +1,20 @@
+{
+  "name": "karnikamit",
+  "homepage": "google.com",
+  "authors": [
+    "karnikamit"
+  ],
+  "description": "learn",
+  "main": "y",
+  "keywords": [
+    "angularJs"
+  ],
+  "license": "GNU",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
