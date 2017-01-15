@@ -20,7 +20,7 @@ def get_client(client_id=None):
             client_id = sound_cloud_creds['client_id']
         client = soundcloud.Client(client_id=client_id)
     except Exception, e:
-        logger.error('Exception while geetting soundCloud client: %s' % e)
+        logger.error('Exception while getting soundCloud client: %s' % e)
     else:
         return client
 

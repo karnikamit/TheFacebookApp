@@ -36,16 +36,40 @@ def get_client(client_id=None):
 
 @app.route('/get-tracks/<limit>', methods=['GET'])
 def get_tracks(limit=10, client_id=sound_cloud_creds['client_id']):
+    '''
+    Souond Cloud Resource obj attrs!
+
+    [u'attachments_uri', u'video_url', u'track_type', u'release_month', u'original_format', u'label_name', u'duration',
+     u'id', u'streamable', u'user_id', u'title', u'favoritings_count', u'commentable', u'label_id', u'state',
+      u'downloadable', u'waveform_url', u'sharing', u'description', u'release_day', u'purchase_url', u'permalink',
+       u'comment_count', u'purchase_title', u'stream_url', u'last_modified', u'user', u'genre', u'isrc', u'download_count',
+        u'permalink_url', u'playback_count', u'kind', u'release_year', u'license', u'artwork_url', u'created_at', u'bpm',
+         u'uri', u'original_content_size', u'key_signature', u'release', u'tag_list', u'embeddable_by']
+
+    '''
+
     client = get_client(client_id)
     tracks = client.get('/tracks', limit=int(limit))
     sound_cloud_tracks = []
     for track in tracks:
-        track_details = {
-            'title':  track.title,
-            'url': track.stream_url
-        }
-        sound_cloud_tracks.append(track_details)
+        if hasattr(track, 'title') and hasattr(track, 'stream_url'):
+            track_details = {
+                'title':  track.title,
+                'url': track.permalink_url,
+            }
+            sound_cloud_tracks.append(track_details)
     return jsonify(sound_cloud_tracks)
+
+
+@app.route('/getWidget', methods=['POST'])
+def get_widget():
+    widget = {'html': ''}
+    data = request.json
+    client = get_client()
+    embed_info = client.get('/oembed', url=data.get('url', ''))
+    if hasattr(embed_info, 'html'):
+        widget['html'] = embed_info.html
+    return jsonify(widget)
 
 
 def get_fb_api(access_token=facebook_creds['ACCESS_TOKEN']):
